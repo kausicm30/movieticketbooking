@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/seatbooking.css" />
+    <title>Movie Seat Booking</title>
+    <Style>
+      .class0{
+    position: sticky;
+    top: 0%;
+}
+.class1{
+    padding-top: 5px;
+    background-color: green;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.class1 img{
+    height:30px;
+    width:50px;
+}
+.class1 span{
+    position: relative;
+    bottom: 10px;
+}
+.class2 nav a:hover{
+    text-decoration: overline;
+}
+.class2{
+    background-color:white;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.class2 img{
+    padding-left: 5%;
+    height:40px;
+    width: 150px;
+}
+.class2 nav a{
+    color: green;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+input{
+  border:none;
+  border-radius:5px;
+  font-weight:700;
+}
+    </Style>
+  </head>
+  <body>
+    <div class="class0">
+      <div class="class1">
+          <marquee behavior="scroll" direction="left">
+          <img src="/public/images/cinema.jpg" alt="image">
+          <span>Welcome to MTB movie ticket booking App</span>
+          <img src="/public/images/cinema.jpg" alt="image">
+          </marquee>
+      </div>
+      <div class="class2">
+          <img src="/public/images/logo.png" alt="image">
+          <nav style="float: right; position: relative; top: 10px; padding-right:10%;">
+              <a href="/home" >Home</a>
+              <a href="#Movies"style="text-decoration: overline;">Movies</a>
+              <a href="#theaters">Theaters</a>
+          </nav>
+      </div>
+  </div>
+    <div class="movie-container">
+      <select id="movie" style="display:none">
+        <option value="100">Godzilla vs Kong</option>
+        <option value="150">Master</option>
+        <option value="100">KGF</option>
+        <option value="100">Drishyam 2</option>
+        <option value="100">War</option>
+      </select>
+    </div>
+
+    <ul class="showcase">
+      <li>
+        <div class="seat"></div>
+        <small>N/A</small>
+      </li>
+      <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+      </li>
+      <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+      </li>
+    </ul>
+
+    <div class="container">
+      <div class="screen"></div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+    </div>
+
+    <p class="text" style="display:none">
+      Totally have selected <span id="count">0</span> seats for a price of $<span id="price">0</span>
+    </p>
+    <br>
+    <br>
+    <form action="/buytickets" method="POST">
+      Movie Name : <input type="text" id="moviename"name="moviename"value="">
+      TotalNoofTickets : <input type="text" id="tot" name="tot"value="">
+      Total Amount : <input type="text" id="tamt"name="tamt"value="">
+      <br>
+      <br>
+      <center><input  style="text-align:center; padding:10px; background-color:pink;font-weight:900;border-radius: 40px;" type="submit" value="Buy tickets"></center>
+    </form>
+    <script src="/public/js/seatbooking.js" type="text/javascript"></script>
+  </body>
+</html>

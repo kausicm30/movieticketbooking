@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <link rel="stylesheet" href="/public/css/adminpage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sub-container">
+            <center><h2>MTB Movie ticket Booking Details</h2></center>
+            <table>
+                <tr>
+                    <th >S. No</th>
+                    <th >EmailId</th>
+                    <th >Movie Name</th>
+                    <th >Totalno.ofTickets</th>
+                    <th >TAmount</th>
+                    <th >Time</th>
+                </tr>
+                <% if(data.length != 0){%>
+                <%var i =1;%>
+                <%data.forEach((row)=>{%>
+                <tr>
+                    <td><%=i%></td>
+                    <td><%=row.email%></td>
+                    <td><%=row.moviename%></td>
+                    <td><%=row.nooftickets%></td>
+                    <td><%=row.totalamount%></td>
+                    <td><%=row.time%></td>
+                </tr>
+                <%i++; });%>
+                <% } else {%>
+                    <tr>
+                        <td colspan="6" class="c">No data Found</td>
+                    </tr>
+                    <%}%>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
