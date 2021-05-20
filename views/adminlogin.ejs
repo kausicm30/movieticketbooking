@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/css/adminlogin.css">
+    <script src="/public/js/adminlogin.js"></script>
+</head>
+<body>
+    <div class="flex-container">
+
+        <div class="sub-container">
+            <form name="myform" action="/validateadminloginform" method="POST">
+                <center>
+                    <img src="https://www.freeiconspng.com/uploads/admin-login-button-png-16.png" alt="admin" height="100px" width="200px">
+                    <br>
+                <br>
+                <input type="text" name="email"placeholder="Email" autocomplete="off">
+                <br>
+                <span id="mail-error"></span>
+                <br>
+                <br>
+                <input type="password" name="password" placeholder="Password" autocomplete="off">
+                <br>
+                <span id="pwd-error"></span>
+                <br>
+                <br>
+                <button onclick=" return validate()">LogIn</button>
+                </center>
+                <br>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
