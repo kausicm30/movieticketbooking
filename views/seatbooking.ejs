@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie seat booking</title>
+    <style>
+        body{
+            background-color:black;
+        }
+        .class0{
+    position: sticky;
+    top: 0%;
+}
+.class1{
+    padding-top: 5px;
+    background-color: green;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.class1 img{
+    height:30px;
+    width:50px;
+}
+.class1 span{
+    position: relative;
+    bottom: 10px;
+}
+.class2 nav a:hover{
+    text-decoration: overline;
+}
+.class2{
+    background-color:white;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.class2 img{
+    padding-left: 5%;
+    height:40px;
+    width: 150px;
+}
+.class2 nav a{
+    color: green;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+        .mydiv div{
+            cursor: pointer;
+            padding:10px;
+            background-color:darkmagenta;
+            color:white;
+            border: 1px solid black;
+            border-radius: 40px;
+            display:inline-block;
+            text-align: center;
+        }
+        .container1{
+            margin-left: 200px;
+            margin-top:50px;
+            display:inline-block;
+            padding:50px;
+            background-color:yellow;
+        }
+        .container2{
+            padding:60px;
+            font-family: 'Courier New', Courier, monospace;
+            left:80px;
+            bottom:30px;
+            position: relative;
+            display:inline-block;
+            background-color:green;
+            color:white;
+            font-weight: 700;
+        }
+        .container2 span{
+            font-size: 20px;
+        }
+/* The Modal (background) */
+.modal,.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content,.modal1-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header,.modal1-header {
+  padding: 2px 16px;
+  background-color: red;
+  color: white;
+}
+
+.modal-body,.modal1-body {padding: 2px 16px;}
+
+.modal-footer,.modal1-footer {
+  padding: 2px 16px;
+  background-color: red;
+  color: white;
+}
+input{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    float:right;
+    font-size: 20px;
+    background-color:transparent;
+    border:none;
+}
+button{
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size:20px;
+    padding:15px;
+    border-radius: 50px;
+}
+button:hover{
+    background-color:blue;
+    color:white;
+}
+    </style>
+    <script>
+        const s='<%=str.first%>';
+        var name='<%=str.moviename%>';
+        var time='<%=str.movietime%>';
+        //alert(s);
+        var count=0;
+        const a=new Array(40);
+        function myfunction(){
+            document.getElementById('movie').value=name;
+            document.getElementById('time').value=time;
+            var s1=s.split(",");
+            for(i=0;i<s1.length;i++){
+                a[parseInt(s1[i])-1]=2;
+                console.log(parseInt(s1[i]));
+                console.log(a[parseInt(s1[i])-1]);
+                document.getElementById(s1[i]).style.backgroundColor="green";
+            }
+        }
+window.onload = myfunction;
+    </script>
+</head>
+<body>
+    <div class="class0">
+        <div class="class1">
+            <marquee behavior="scroll" direction="left">
+            <img src="/public/images/cinema.jpg" alt="image">
+            <span>Welcome to MTB movie ticket booking App</span>
+            <img src="/public/images/cinema.jpg" alt="image">
+            </marquee>
+        </div>
+        <div class="class2">
+            <img src="/public/images/logo.png" alt="image">
+            <nav style="float: right; position: relative; top: 10px; padding-right:10%;">
+                <a href="/home" >Home</a>
+                <a href="#Movies"style="text-decoration: overline;">Movies</a>
+            </nav>
+        </div>
+    </div>
+    <!--<%=str.first%>-->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" style="font-size:30px">&times;</span>
+                <h2 style="text-align:center;">Alert !</h2>
+            </div>
+            <div class="modal-body">
+                <h2 style="text-align:center;" id="modalbody"> You can't Book more than 4 seats at a time</h2>
+                </div>
+            <div class="modal-footer">
+                <h3 style="text-align:center;">Thank you !!!</h3>
+            </div>
+        </div>
+  </div>
+  <div style="position: relative;color:white;margin-top:20px;margin-bottom:20px;margin-left: 300px;top:30px;">
+      <div style="height:20px;width:20px;background-color:darkmagenta;display:inline-block;border-radius: 30px;"></div> <span style="font-size:20px; padding-right:10px;">N/A</span>
+      <div style="height:20px;width:20px;background-color:blue;display:inline-block;border-radius: 30px;"></div><span style="font-size:20px; padding-right:10px;">Selected</span>
+      <div style="height:20px;width:20px;background-color:green;display:inline-block;border-radius: 30px;"></div><span style="font-size:20px; padding-right:10px;">Occupied</span>
+  </div>
+    <div class="container1">
+        <div style="text-align:center;position: relative;bottom:10px;"><h1>Book Your Seats</h1></div>
+    <div class="mydiv">
+        <div onclick="execute1()" id="1">01</div>
+        <div onclick="execute2()" id="2">02</div>
+        <div style="margin-left: 20px;" onclick="execute3()" id="3">03</div>
+        <div onclick="execute4()" id="4">04</div>
+        <div onclick="execute5()" id="5">05</div>
+        <div onclick="execute6()" id="6">06</div>
+        <div style="margin-left:20px;" onclick="execute7()" id="7">07</div>
+        <div onclick="execute8()" id="8">08</div>
+    </div>
+    <br>
+    <div class="mydiv">
+        <div onclick="execute9()" id="9">09</div>
+        <div onclick="execute10()" id="10">10</div>
+        <div style="margin-left: 20px;" onclick="execute11()" id="11">11</div>
+        <div onclick="execute12()" id="12">12</div>
+        <div onclick="execute13()" id="13">13</div>
+        <div onclick="execute14()" id="14">14</div>
+        <div style="margin-left:20px;" onclick="execute15()" id="15">15</div>
+        <div onclick="execute16()" id="16">16</div>
+    </div>
+    <br>
+    <div class="mydiv">
+        <div onclick="execute17()" id="17">17</div>
+        <div onclick="execute18()" id="18">18</div>
+        <div style="margin-left: 20px;" onclick="execute19()" id="19">19</div>
+        <div onclick="execute20()" id="20">20</div>
+        <div onclick="execute21()" id="21">21</div>
+        <div onclick="execute22()" id="22">22</div>
+        <div style="margin-left:20px;" onclick="execute23()" id="23">23</div>
+        <div onclick="execute24()" id="24">24</div>
+    </div>
+    <br>
+    <div class="mydiv">
+        <div onclick="execute25()" id="25">25</div>
+        <div onclick="execute26()" id="26">26</div>
+        <div style="margin-left: 20px;" onclick="execute27()" id="27">27</div>
+        <div onclick="execute28()" id="28">28</div>
+        <div onclick="execute29()" id="29">29</div>
+        <div onclick="execute30()" id="30">30</div>
+        <div style="margin-left:20px;" onclick="execute31()" id="31">31</div>
+        <div onclick="execute32()" id="32">32</div>
+    </div>
+    <br>
+    <div class="mydiv">
+        <div onclick="execute33()" id="33">33</div>
+        <div onclick="execute34()" id="34">34</div>
+        <div style="margin-left: 20px;" onclick="execute35()" id="35">35</div>
+        <div onclick="execute36()" id="36">36</div>
+        <div onclick="execute37()" id="37">37</div>
+        <div onclick="execute38()" id="38">38</div>
+        <div style="margin-left:20px;" onclick="execute39()" id="39">39</div>
+        <div onclick="execute40()" id="40">40</div>
+    </div>
+    </div>
+    <div class="container2">
+            <form  action="/getseatbookingdetails" method="POST">
+                <h2 style="text-align:center; color:white">MOVIE DETAILS</h2>
+                <br>
+                <span>Movie Name : <input style="color:white" type="text" id="movie" name="movie" value="Master"></span>
+                <br><br>
+                <span>Movie Time : <input style="color:white" type="text" id="time" name="time" value="2.00pm"></span>
+                <br><br>
+                <span>Total NoOfTicket : <input style="color:white" type="text" id="count" name="count" value="0"></span>
+                <br><br>
+                <span>Seat Numbers : <input style="color:white"  type="text" id="seat" name="seat" value=""></span>
+                <br><br>
+                <span>Total Amount : <input style="color:white" type="text" id="amount" name="amount" value="0"></span>
+                <br><br>
+                <center><button type="submit" onclick=" return confirmation()">Buy tickets</button></center>
+
+            </form>
+    </div>
+    <br>
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        function alerting() {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+        function confirmation(){
+            var amt=document.getElementById("amount").value;
+            var flag=0;
+            if(amt==0)
+            {
+                alert("Please Book the seats first.");
+                return false;
+            }
+            else
+            {
+                if(confirm("Are you sure ? "))
+                {
+                    alert("You have successfully buy the tickets");
+                    return true;
+                }
+                return false;
+            }
+
+        }
+        function total(){
+            var str ="";
+            for(i=0;i<40;i++)
+            {
+                if(a[i]==1)
+                {
+                    if(str!="")
+                    str+=",";
+                    str+=(i+1).toString();
+                }
+            }
+            document.getElementById("seat").value=str;
+            document.getElementById("count").value=count;
+            document.getElementById("amount").value=(count*150);
+        }
+        function execute1(){
+            if(count>=4 && a[0]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[0]!=2)
+            if(a[0]!=1){
+                document.getElementById('1').style.backgroundColor="blue";
+                a[0]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('1').style.backgroundColor="darkmagenta";
+                a[0]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute2(){
+            if(count>=4 && a[1]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[1]!=2)
+            if(a[1]!=1){
+                document.getElementById('2').style.backgroundColor="blue";
+                a[1]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('2').style.backgroundColor="darkmagenta";
+                a[1]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute3(){
+            if(count>=4 && a[2]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[2]!=2)
+            if(a[2]!=1){
+                document.getElementById('3').style.backgroundColor="blue";
+                a[2]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('3').style.backgroundColor="darkmagenta";
+                a[2]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute4(){
+            if(count>=4 && a[3]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[3]!=2)
+            if(a[3]!=1){
+                document.getElementById('4').style.backgroundColor="blue";
+                a[3]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('4').style.backgroundColor="darkmagenta";
+                a[3]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute5(){
+            if(count>=4 && a[4]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[4]!=2)
+            if(a[4]!=1){
+                document.getElementById('5').style.backgroundColor="blue";
+                a[4]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('5').style.backgroundColor="darkmagenta";
+                a[4]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute6(){
+            if(count>=4 && a[5]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[5]!=2)
+            if(a[5]!=1){
+                document.getElementById('6').style.backgroundColor="blue";
+                a[5]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('6').style.backgroundColor="darkmagenta";
+                a[5]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute7(){
+            if(count>=4 && a[6]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[6]!=2)
+            if(a[6]!=1){
+                document.getElementById('7').style.backgroundColor="blue";
+                a[6]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('7').style.backgroundColor="darkmagenta";
+                a[6]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute8(){
+            if(count>=4 && a[7]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[7]!=2)
+            if(a[7]!=1){
+                document.getElementById('8').style.backgroundColor="blue";
+                a[7]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('8').style.backgroundColor="darkmagenta";
+                a[7]=0;
+                count=count-1;
+                total();
+            }
+        }
+      function execute9(){
+            if(count>=4 && a[8]!=1)
+            {
+              alerting();
+                return;
+            }
+            if(a[8]!=2)
+            if(a[8]!=1){
+                document.etElementById('9').style.backgroundColor="blue";
+                a[8]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('9').style.backgroundColor="darkmagenta";
+                a[8]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute10(){
+            if(count>=4 && a[9]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[9]!=2)
+            if(a[9]!=1){
+                document.getElementById('10').style.backgroundColor="blue";
+                a[9]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('10').style.backgroundColor="darkmagenta";
+                a[9]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute11(){
+            if(count>=4 && a[10]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[10]!=2)
+            if(a[10]!=1){
+                document.getElementById('11').style.backgroundColor="blue";
+                a[10]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('11').style.backgroundColor="darkmagenta";
+                a[10]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute12(){
+            if(count>=4 && a[11]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[11]!=2)
+            if(a[11]!=1){
+                document.getElementById('12').style.backgroundColor="blue";
+                a[11]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('12').style.backgroundColor="darkmagenta";
+                a[11]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute13(){
+            if(count>=4 && a[12]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[12]!=2)
+            if(a[12]!=1){
+                document.getElementById('13').style.backgroundColor="blue";
+                a[12]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('13').style.backgroundColor="darkmagenta";
+                a[12]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute14(){
+            if(count>=4 && a[13]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[13]!=2)
+            if(a[13]!=1){
+                document.getElementById('14').style.backgroundColor="blue";
+                a[13]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('14').style.backgroundColor="darkmagenta";
+                a[13]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute15(){
+            if(count>=4 && a[14]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[14]!=2)
+            if(a[14]!=1){
+                document.getElementById('15').style.backgroundColor="blue";
+                a[14]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('15').style.backgroundColor="darkmagenta";
+                a[14]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute16(){
+            if(count>=4 && a[15]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[15]!=2)
+            if(a[15]!=1){
+                document.getElementById('16').style.backgroundColor="blue";
+                a[15]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('16').style.backgroundColor="darkmagenta";
+                a[15]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute17(){
+            if(count>=4 && a[16]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[16]!=2)
+            if(a[16]!=1){
+                document.getElementById('17').style.backgroundColor="blue";
+                a[16]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('17').style.backgroundColor="darkmagenta";
+                a[16]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute18(){
+            if(count>=4 && a[17]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[17]!=2)
+            if(a[17]!=1){
+                document.getElementById('18').style.backgroundColor="blue";
+                a[17]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('18').style.backgroundColor="darkmagenta";
+                a[17]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute19(){
+            if(count>=4 && a[18]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[18]!=2)
+            if(a[18]!=1){
+                document.getElementById('19').style.backgroundColor="blue";
+                a[18]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('19').style.backgroundColor="darkmagenta";
+                a[18]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute20(){
+            if(count>=4 && a[19]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[19]!=2)
+            if(a[19]!=1){
+                document.getElementById('20').style.backgroundColor="blue";
+                a[19]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('20').style.backgroundColor="darkmagenta";
+                a[19]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute21(){
+            if(count>=4 && a[20]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[20]!=2)
+            if(a[20]!=1){
+                document.getElementById('21').style.backgroundColor="blue";
+                a[20]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('21').style.backgroundColor="darkmagenta";
+                a[20]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute22(){
+            if(count>=4 && a[21]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[21]!=2)
+            if(a[21]!=1){
+                document.getElementById('22').style.backgroundColor="blue";
+                a[21]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('22').style.backgroundColor="darkmagenta";
+                a[21]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute23(){
+            if(count>=4 && a[22]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[22]!=2)
+            if(a[22]!=1){
+                document.getElementById('23').style.backgroundColor="blue";
+                a[22]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('23').style.backgroundColor="darkmagenta";
+                a[22]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute24(){
+            if(count>=4 && a[23]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[23]!=2)
+            if(a[23]!=1){
+                document.getElementById('24').style.backgroundColor="blue";
+                a[23]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('24').style.backgroundColor="darkmagenta";
+                a[23]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute25(){
+            if(count>=4 && a[24]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[24]!=2)
+            if(a[24]!=1){
+                document.getElementById('25').style.backgroundColor="blue";
+                a[24]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('25').style.backgroundColor="darkmagenta";
+                a[24]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute26(){
+            if(count>=4 && a[25]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[25]!=2)
+            if(a[25]!=1){
+                document.getElementById('26').style.backgroundColor="blue";
+                a[25]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('26').style.backgroundColor="darkmagenta";
+                a[25]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute27(){
+            if(count>=4 && a[26]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[26]!=2)
+            if(a[26]!=1){
+                document.getElementById('27').style.backgroundColor="blue";
+                a[26]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('27').style.backgroundColor="darkmagenta";
+                a[26]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute28(){
+            if(count>=4 && a[27]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[27]!=2)
+            if(a[27]!=1){
+                document.getElementById('28').style.backgroundColor="blue";
+                a[27]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('28').style.backgroundColor="darkmagenta";
+                a[27]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute29(){
+            if(count>=4 && a[28]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[28]!=2)
+            if(a[28]!=1){
+                document.getElementById('29').style.backgroundColor="blue";
+                a[28]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('29').style.backgroundColor="darkmagenta";
+                a[28]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute30(){
+            if(count>=4 && a[29]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[29]!=2)
+            if(a[29]!=1){
+                document.getElementById('30').style.backgroundColor="blue";
+                a[29]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('30').style.backgroundColor="darkmagenta";
+                a[29]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute31(){
+            if(count>=4 && a[30]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[30]!=2)
+            if(a[30]!=1){
+                document.getElementById('31').style.backgroundColor="blue";
+                a[30]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('31').style.backgroundColor="darkmagenta";
+                a[30]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute32(){
+            if(count>=4 && a[31]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[31]!=2)
+            if(a[31]!=1){
+                document.getElementById('32').style.backgroundColor="blue";
+                a[31]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('32').style.backgroundColor="darkmagenta";
+                a[31]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute33(){
+            if(count>=4 && a[32]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[32]!=2)
+            if(a[32]!=1){
+                document.getElementById('33').style.backgroundColor="blue";
+                a[32]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('33').style.backgroundColor="darkmagenta";
+                a[32]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute34(){
+            if(count>=4 && a[33]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[33]!=2)
+            if(a[33]!=1){
+                document.getElementById('34').style.backgroundColor="blue";
+                a[33]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('34').style.backgroundColor="darkmagenta";
+                a[33]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute35(){
+            if(count>=4 && a[34]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[34]!=2)
+            if(a[34]!=1){
+                document.getElementById('35').style.backgroundColor="blue";
+                a[34]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('35').style.backgroundColor="darkmagenta";
+                a[34]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute36(){
+            if(count>=4 && a[35]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[35]!=2)
+            if(a[35]!=1){
+                document.getElementById('36').style.backgroundColor="blue";
+                a[35]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('36').style.backgroundColor="darkmagenta";
+                a[35]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute37(){
+            if(count>=4 && a[36]!=1)
+            {0
+                alerting();
+                return;
+            }
+            if(a[36]!=2)
+            if(a[36]!=1){
+                document.getElementById('37').style.backgroundColor="blue";
+                a[36]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('37').style.backgroundColor="darkmagenta";
+                a[36]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute38(){
+            if(count>=4 && a[37]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[37]!=2)
+            if(a[37]!=1){
+                document.getElementById('38').style.backgroundColor="blue";
+                a[37]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('38').style.backgroundColor="darkmagenta";
+                a[37]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute39(){
+            if(count>=4 && a[38]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[38]!=2)
+            if(a[38]!=1){
+                document.getElementById('39').style.backgroundColor="blue";
+                a[38]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('39').style.backgroundColor="darkmagenta";
+                a[38]=0;
+                count=count-1;
+                total();
+            }
+        }
+        function execute40(){
+            if(count>=4 && a[39]!=1)
+            {
+                alerting();
+                return;
+            }
+            if(a[39]!=2)
+            if(a[39]!=1){
+                document.getElementById('40').style.backgroundColor="blue";
+                a[39]=1;
+                count=count+1;
+                total();
+            }
+            else
+            {
+                document.getElementById('40').style.backgroundColor="darkmagenta";
+                a[39]=0;
+                count=count-1;
+                total();
+            }
+        }
+    </script>
+</body>
+</html>
